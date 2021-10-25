@@ -10,6 +10,7 @@ service Chat {
     rpc register(UserID) returns (stream ChatMessage);
     rpc sendMessage(ChatMessage) returns (google.protobuf.Empty);
     rpc getActiveUsers(google.protobuf.Empty) returns (Users);
+    rpc exitChat(UserID) returns (google.protobuf.Empty);
 }
 
 message UserID {

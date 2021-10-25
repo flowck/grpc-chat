@@ -1,5 +1,7 @@
 package server;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
@@ -47,13 +49,26 @@ public class ChatServer extends ChatImplBase {
 
 	@Override
 	public void getActiveUsers(Empty request, StreamObserver<Users> responseObserver) {
-		// TODO Auto-generated method stub
-		super.getActiveUsers(request, responseObserver);
+      // Add all users to an array list
+      List<UserID> users = new ArrayList<>(clients.keySet());
+
+      // Build a new Users object
+      Users usersReply = Users.newBuilder().addAllUsers(users).build();
+
+      // Send a response to the client
+      responseObserver.onNext(usersReply);
+      responseObserver.onCompleted();
 	}
 
+    @Override
+    public void exitChat(UserID userID, StreamObserver<Empty> responseObserver) {
+        clients.remove(userID);
+        System.out.println("User " + userID.getName() + " has been removed");
+        responseObserver.onNext(Empty.newBuilder().build());
+        responseObserver.onCompleted();
+    }
 
-
-	@Override
+    @Override
     public void sendMessage(ChatMessage inMessage, StreamObserver<Empty> responseObserver) {
         for (UserID clientDest : clients.keySet()) {
             try {
