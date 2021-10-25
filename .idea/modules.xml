@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/grpcchat.iml" filepath="$PROJECT_DIR$/grpcchat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/grpcchatClient/grpcchatClient.iml" filepath="$PROJECT_DIR$/grpcchatClient/grpcchatClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/grpcchatContract/grpcchatContract.iml" filepath="$PROJECT_DIR$/grpcchatContract/grpcchatContract.iml" />
+      <module fileurl="file://$PROJECT_DIR$/grpcchatServer/grpcchatServer.iml" filepath="$PROJECT_DIR$/grpcchatServer/grpcchatServer.iml" />
+    </modules>
+  </component>
+</project>
